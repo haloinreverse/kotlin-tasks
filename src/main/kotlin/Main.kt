@@ -38,6 +38,12 @@ fun main(){
                 val place = readln().toInt()
                 manager.findCarByParkingPlace(place)
             }
+            "/park_stats" -> {
+                manager.provideCurrentCapacity()
+            }
+            "/park_all_stats" -> {
+                manager.provideAllStats()
+            }
             else ->{
                 println("No such command exists! Try \"/help\"")
             }

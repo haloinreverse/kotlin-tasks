@@ -5,6 +5,7 @@ class Manager {
         var carsOnParking = 0
         var capacity = DEFAULT_CAPACITY
         var parkingPlaces = mutableMapOf<Int, Car>()
+        var total = 0
         init{
             for (i in 0..capacity){
                 parkingPlaces[i] = nullCar
@@ -40,6 +41,7 @@ class Manager {
             parking.parkingPlaces[currentPlace] = car
             println("Car was successfully parked! Number of the place is $currentPlace")
             parking.carsOnParking++
+            parking.total++
         }
     }
     fun returnCar(ownerName: String, carNumber: String){
@@ -81,8 +83,12 @@ class Manager {
         }
     }
 
-    fun provideStatistics(){
-        TODO()
+    fun provideCurrentCapacity(){
+        println("There are ${parking.carsOnParking} cars parked right now!")
+    }
+
+    fun provideAllStats(){
+        println("${parking.total} cars were parked in total")
     }
 
 }
