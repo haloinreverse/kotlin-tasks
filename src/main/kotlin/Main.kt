@@ -1,8 +1,50 @@
 fun main(){
-    when (readlnOrNull()){
-        "/start" -> {println("Program started working")}
-        "/end" -> {println("Program ended working")}
-        "/help" -> {println("List of commands: \"/start\" - program starts working, \"end\" - program ends working")}
-        else -> println("This command doesn't exist. Type \"/help\" to get the list of commands")
+    println("Enter your command")
+    var line:String? = readlnOrNull()
+    val manager:Manager = Manager()
+    while (!line.equals("/end")){
+        when (line){
+            "/start" -> println("Program starts working")
+            "/help" -> {
+                for (str in Command.values()){
+                    println(str.command)
+                }
+            }
+            "/park" -> {
+                println("Enter car's brand and model")
+                val brand = readln()
+                println("Enter car's color")
+                val color = readln()
+                println("Enter car's number")
+                val number = readln()
+                println("Enter owner's (your) name")
+                val ownerName = readln()
+                manager.parkCar(Car(brand, color, number, Owner(ownerName)))
+            }
+            "/return" ->{
+                println("Enter car's number")
+                val number = readln()
+                println("Enter owner's (your) name")
+                val ownerName = readln()
+                manager.returnCar(ownerName, number)
+            }
+            "/park_info_by_car" ->{
+                println("Enter car's number")
+                val number = readln()
+                manager.findCarByNumber(number)
+            }
+            "/park_info_by_place" ->{
+                println("Enter parking place's number")
+                val place = readln().toInt()
+                manager.findCarByParkingPlace(place)
+            }
+            else ->{
+                println("No such command exists! Try \"/help\"")
+            }
+        }
+        line = readlnOrNull()
+
     }
+    println("Bye-bye!")
+
 }
