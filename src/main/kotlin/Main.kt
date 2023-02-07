@@ -1,7 +1,8 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
-
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(){
+    when (readlnOrNull()){
+        "/start" -> {println("Program started working")}
+        "/end" -> {println("Program ended working")}
+        "/help" -> {println("List of commands: \"/start\" - program starts working, \"end\" - program ends working")}
+        else -> println("This command doesn't exist. Type \"/help\" to get the list of commands")
+    }
 }
