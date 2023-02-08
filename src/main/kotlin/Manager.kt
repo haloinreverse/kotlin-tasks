@@ -84,12 +84,12 @@ class Manager {
     }
 
     fun provideCurrentCapacity(){
-        for (i in 1..parking.capacity){
+        for (i in 0..parking.capacity){
             var car = parking.parkingPlaces[i]
             if (car == parking.nullCar){
                 println("Place $i - free")
             }
-            else println("Place $i - ${car?.brand} ${car?.number} ${car?.number} ${car?.owner?.name}")
+            else println("Place $i - ${car?.brand} ${car?.color} ${car?.number} ${car?.owner?.name}")
         }
     }
 
