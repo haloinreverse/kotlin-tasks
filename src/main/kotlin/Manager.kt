@@ -1,7 +1,7 @@
 class Manager {
     private class Parking(){
         val nullCar = Car("", "", "", Owner(""))
-        val DEFAULT_CAPACITY = 30
+        val DEFAULT_CAPACITY = 10
         var carsOnParking = 0
         var capacity = DEFAULT_CAPACITY
         var parkingPlaces = mutableMapOf<Int, Car>()
@@ -84,7 +84,13 @@ class Manager {
     }
 
     fun provideCurrentCapacity(){
-        println("There are ${parking.carsOnParking} cars parked right now!")
+        for (i in 1..parking.capacity){
+            var car = parking.parkingPlaces[i]
+            if (car == parking.nullCar){
+                println("Place $i - free")
+            }
+            else println("Place $i - ${car?.brand} ${car?.number} ${car?.number} ${car?.owner?.name}")
+        }
     }
 
     fun provideAllStats(){
