@@ -1,1 +1,1 @@
-class Owner (val name: String, val licenseID: Int)
+data class Owner (val name: String)
