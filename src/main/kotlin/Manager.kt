@@ -1,10 +1,11 @@
 class Manager {
     private class Parking(){
         val nullCar = Car("", "", "", Owner(""))
-        val DEFAULT_CAPACITY = 30
+        val DEFAULT_CAPACITY = 10
         var carsOnParking = 0
         var capacity = DEFAULT_CAPACITY
         var parkingPlaces = mutableMapOf<Int, Car>()
+        var total = 0
         init{
             for (i in 0..capacity){
                 parkingPlaces[i] = nullCar
@@ -40,6 +41,7 @@ class Manager {
             parking.parkingPlaces[currentPlace] = car
             println("Car was successfully parked! Number of the place is $currentPlace")
             parking.carsOnParking++
+            parking.total++
         }
     }
     fun returnCar(ownerName: String, carNumber: String){
@@ -81,8 +83,18 @@ class Manager {
         }
     }
 
-    fun provideStatistics(){
-        TODO()
+    fun provideCurrentCapacity(){
+        for (i in 0..parking.capacity){
+            var car = parking.parkingPlaces[i]
+            if (car == parking.nullCar){
+                println("Place $i - free")
+            }
+            else println("Place $i - ${car?.brand} ${car?.color} ${car?.number} ${car?.owner?.name}")
+        }
+    }
+
+    fun provideAllStats(){
+        println("${parking.total} cars were parked in total")
     }
 
 }
